@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "warn"
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/out/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/next-env.d.ts",
+    "types/routes.d.ts",
+    "types/validator.ts",
+    "types/cache-life.d.ts",
+    "types/root-params.d.ts"
+  ]
+}
