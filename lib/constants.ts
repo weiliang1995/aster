@@ -1,7 +1,9 @@
+import { MARKET_SYMBOL_GROUPS, STOCK_SYMBOLS } from "@/lib/market-symbols";
+
 export const NAV_ITEMS = [
   { href: "/", label: "Dashboard" },
-  { href: "/search", label: "Search" },
-  { href: "/watchlist", label: "Watchlist" },
+  { href: "/markets", label: "Markets" },
+  
 ];
 
 // Sign-up form select options
@@ -36,64 +38,8 @@ export const CONDITION_OPTIONS = [
   { value: "less", label: "Less than (<)" },
 ];
 
-// TradingView Charts
-export const MARKET_OVERVIEW_WIDGET_CONFIG = {
-  colorTheme: "dark", // dark mode
-  dateRange: "12M", // last 12 months
-  locale: "en", // language
-  largeChartUrl: "", // link to a large chart if needed
-  isTransparent: true, // makes background transparent
-  showFloatingTooltip: true, // show tooltip on hover
-  plotLineColorGrowing: "#0FEDBE", // line color when price goes up
-  plotLineColorFalling: "#0FEDBE", // line color when price falls
-  gridLineColor: "rgba(240, 243, 250, 0)", // grid line color
-  scaleFontColor: "#DBDBDB", // font color for scale
-  belowLineFillColorGrowing: "rgba(41, 98, 255, 0.12)", // fill under line when growing
-  belowLineFillColorFalling: "rgba(41, 98, 255, 0.12)", // fill under line when falling
-  belowLineFillColorGrowingBottom: "rgba(41, 98, 255, 0)",
-  belowLineFillColorFallingBottom: "rgba(41, 98, 255, 0)",
-  symbolActiveColor: "rgba(15, 237, 190, 0.05)", // highlight color for active symbol
-  tabs: [
-    {
-      title: "Financial",
-      symbols: [
-        { s: "NYSE:JPM", d: "JPMorgan Chase" },
-        { s: "NYSE:WFC", d: "Wells Fargo Co New" },
-        { s: "NYSE:BAC", d: "Bank Amer Corp" },
-        { s: "NYSE:HSBC", d: "Hsbc Hldgs Plc" },
-        { s: "NYSE:C", d: "Citigroup Inc" },
-        { s: "NYSE:MA", d: "Mastercard Incorporated" },
-      ],
-    },
-    {
-      title: "Technology",
-      symbols: [
-        { s: "NASDAQ:AAPL", d: "Apple" },
-        { s: "NASDAQ:GOOGL", d: "Alphabet" },
-        { s: "NASDAQ:MSFT", d: "Microsoft" },
-        { s: "NASDAQ:FB", d: "Meta Platforms" },
-        { s: "NYSE:ORCL", d: "Oracle Corp" },
-        { s: "NASDAQ:INTC", d: "Intel Corp" },
-      ],
-    },
-    {
-      title: "Services",
-      symbols: [
-        { s: "NASDAQ:AMZN", d: "Amazon" },
-        { s: "NYSE:BABA", d: "Alibaba Group Hldg Ltd" },
-        { s: "NYSE:T", d: "At&t Inc" },
-        { s: "NYSE:WMT", d: "Walmart" },
-        { s: "NYSE:V", d: "Visa" },
-      ],
-    },
-  ],
-  support_host: "https://www.tradingview.com", // TradingView host
-  backgroundColor: "#141414", // background color
-  width: "100%", // full width
-  height: 600, // height in px
-  showSymbolLogo: true, // show logo next to symbols
-  showChart: true, // display mini chart
-};
+// Both Web Components read the shared symbol catalogue.
+export const MARKET_OVERVIEW_WIDGET_CONFIG = { symbolSectors: MARKET_SYMBOL_GROUPS };
 
 export const HEATMAP_WIDGET_CONFIG = {
   dataSource: "SPX500",
@@ -125,49 +71,16 @@ export const TOP_STORIES_WIDGET_CONFIG = {
   height: "600",
 };
 
-export const MARKET_DATA_WIDGET_CONFIG = {
-  title: "Stocks",
-  width: "100%",
-  height: 600,
-  locale: "en",
-  showSymbolLogo: true,
+export const MARKET_DATA_WIDGET_CONFIG = { symbolSectors: MARKET_SYMBOL_GROUPS };
+
+export const ECONOMIC_CALENDAR_WIDGET_CONFIG = {
   colorTheme: "dark",
-  isTransparent: false,
-  backgroundColor: "#0F0F0F",
-  symbolsGroups: [
-    {
-      name: "Financial",
-      symbols: [
-        { name: "NYSE:JPM", displayName: "JPMorgan Chase" },
-        { name: "NYSE:WFC", displayName: "Wells Fargo Co New" },
-        { name: "NYSE:BAC", displayName: "Bank Amer Corp" },
-        { name: "NYSE:HSBC", displayName: "Hsbc Hldgs Plc" },
-        { name: "NYSE:C", displayName: "Citigroup Inc" },
-        { name: "NYSE:MA", displayName: "Mastercard Incorporated" },
-      ],
-    },
-    {
-      name: "Technology",
-      symbols: [
-        { name: "NASDAQ:AAPL", displayName: "Apple" },
-        { name: "NASDAQ:GOOGL", displayName: "Alphabet" },
-        { name: "NASDAQ:MSFT", displayName: "Microsoft" },
-        { name: "NASDAQ:FB", displayName: "Meta Platforms" },
-        { name: "NYSE:ORCL", displayName: "Oracle Corp" },
-        { name: "NASDAQ:INTC", displayName: "Intel Corp" },
-      ],
-    },
-    {
-      name: "Services",
-      symbols: [
-        { name: "NASDAQ:AMZN", displayName: "Amazon" },
-        { name: "NYSE:BABA", displayName: "Alibaba Group Hldg Ltd" },
-        { name: "NYSE:T", displayName: "At&t Inc" },
-        { name: "NYSE:WMT", displayName: "Walmart" },
-        { name: "NYSE:V", displayName: "Visa" },
-      ],
-    },
-  ],
+  isTransparent: true,
+  locale: "en",
+  countryFilter: "us,cn,jp,gb,eu",
+  importanceFilter: "1",
+  width: "100%",
+  height: 550,
 };
 
 export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
@@ -234,7 +147,7 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
 export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
   symbol: symbol.toUpperCase(),
   colorTheme: "dark",
-  isTransparent: "true",
+  isTransparent: true,
   locale: "en",
   width: "100%",
   height: 400,
@@ -245,7 +158,7 @@ export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
 export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
   symbol: symbol.toUpperCase(),
   colorTheme: "dark",
-  isTransparent: "true",
+  isTransparent: true,
   locale: "en",
   width: "100%",
   height: 440,
@@ -254,7 +167,7 @@ export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
 export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
   symbol: symbol.toUpperCase(),
   colorTheme: "dark",
-  isTransparent: "true",
+  isTransparent: true,
   locale: "en",
   width: "100%",
   height: 464,
@@ -262,67 +175,7 @@ export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
   largeChartUrl: "",
 });
 
-export const POPULAR_STOCK_SYMBOLS = [
-  // Tech Giants (the big technology companies)
-  "AAPL",
-  "MSFT",
-  "GOOGL",
-  "AMZN",
-  "TSLA",
-  "META",
-  "NVDA",
-  "NFLX",
-  "ORCL",
-  "CRM",
-
-  // Growing Tech Companies
-  "ADBE",
-  "INTC",
-  "AMD",
-  "PYPL",
-  "UBER",
-  "ZOOM",
-  "SPOT",
-  "SQ",
-  "SHOP",
-  "ROKU",
-
-  // Newer Tech Companies
-  "SNOW",
-  "PLTR",
-  "COIN",
-  "RBLX",
-  "DDOG",
-  "CRWD",
-  "NET",
-  "OKTA",
-  "TWLO",
-  "ZM",
-
-  // Consumer & Delivery Apps
-  "DOCU",
-  "PTON",
-  "PINS",
-  "SNAP",
-  "LYFT",
-  "DASH",
-  "ABNB",
-  "RIVN",
-  "LCID",
-  "NIO",
-
-  // International Companies
-  "XPEV",
-  "LI",
-  "BABA",
-  "JD",
-  "PDD",
-  "TME",
-  "BILI",
-  "DIDI",
-  "GRAB",
-  "SE",
-];
+export const POPULAR_STOCK_SYMBOLS = STOCK_SYMBOLS.map(symbol => symbol.split(":").pop()!);
 
 export const NO_MARKET_NEWS =
   '<p class="mobile-text" style="margin:0 0 20px 0;font-size:16px;line-height:1.6;color:#4b5563;">No market news available today. Please check back tomorrow.</p>';
