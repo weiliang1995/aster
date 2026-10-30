@@ -33,7 +33,7 @@ export default function UserDropdown() {
         render={
           <Button
             variant="ghost"
-            className="flex items-center gap-3 text-gray-4 hover:text-yellow-500"
+            className="flex items-center gap-3 text-gray-400 hover:text-yellow-500"
           >
             <Avatar className="h-8 w-8">
               <AvatarImage
@@ -78,7 +78,7 @@ export default function UserDropdown() {
           <DropdownMenuSeparator className="bg-gray-600" />
           <DropdownMenuItem
             onClick={handleSignOut}
-            className="text-gray-100 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors"
+            className="text-gray-100 text-base font-medium focus:bg-transparent focus:text-yellow-500 transition-colors"
           >
             <LogOut className="h-4 w-4 mr-2 hidden sm:block" />
             Log Out

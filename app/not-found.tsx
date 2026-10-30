@@ -2,11 +2,15 @@
 import Header from "@/components/Header";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function NotFound() {
   const router = useRouter();
-  setTimeout(() => {
-    router.push("/");
-  }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/");
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [router]);
   return (
     <>
       <Header />
