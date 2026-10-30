@@ -18,6 +18,12 @@
 /.next/
 /out/
 
+# Next.js-generated types belong in .next/, not the source types directory.
+/types/validator.ts
+/types/routes.d.ts
+/types/cache-life.d.ts
+/types/root-params.d.ts
+
 # production
 /build
 

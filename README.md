@@ -36,7 +36,8 @@ pnpm lint:eslint  # Run only the remaining ESLint checks
 
 Configure Oxlint in `.oxlintrc.json` and remaining ESLint rules in
 `eslint.config.mjs`. Both tools ignore Next.js output, build output, coverage,
-`next-env.d.ts`, and the four Next.js-generated files currently in `types/`.
+and `next-env.d.ts`. Next.js generates route and cache types inside `.next/`;
+keep only application-owned declarations in `types/`.
 Run `pnpm lint` in CI as well as locally.
 
 ### Pre-commit checks
@@ -55,6 +56,15 @@ JavaScript/TypeScript configuration files and scripts are included in the hook.
 
 Run `pnpm lint:staged` to check the current staged files manually, or
 `pnpm lint` for the entire project.
+
+### Pre-push checks
+
+Before each push, Husky runs `pnpm run lint` followed by `pnpm run build`.
+Either failure blocks the push. The production build includes TypeScript checks
+and route validation, so it catches errors that staged-file linting cannot.
+Run these same commands manually to check before pushing. Build-time environment
+variables and network access must be available, just as for a deployment build.
+CI should also run both checks because local hooks can be bypassed.
 
 ## Learn More
 

@@ -14,11 +14,6 @@ const eslintConfig = defineConfig([
     "build/**",
     "coverage/**",
     "next-env.d.ts",
-    // Next.js-generated route and cache types currently stored at the root.
-    "types/routes.d.ts",
-    "types/validator.ts",
-    "types/cache-life.d.ts",
-    "types/root-params.d.ts",
   ]),
   // Disable only rules enabled in Oxlint; keep this after the Next.js configs.
   ...(await oxlint.buildFromConfigFile(".oxlintrc.json")),

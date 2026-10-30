@@ -10,10 +10,6 @@
     "**/out/**",
     "**/build/**",
     "**/coverage/**",
-    "**/next-env.d.ts",
-    "types/routes.d.ts",
-    "types/validator.ts",
-    "types/cache-life.d.ts",
-    "types/root-params.d.ts"
+    "**/next-env.d.ts"
   ]
 }
