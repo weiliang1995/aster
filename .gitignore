@@ -43,3 +43,8 @@ next-env.d.ts
 
 #claude
 .claude/settings.local.json
+
+# CodeRabbit local review artifacts (scripts/cr-agent.sh)
+/.coderabbit/review.ndjson
+/.coderabbit/review.tmp.*
+/.coderabbit/stale/

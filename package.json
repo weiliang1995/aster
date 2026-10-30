@@ -11,7 +11,8 @@
     "lint:eslint": "eslint . --max-warnings=0",
     "lint:fix": "oxlint . --fix && eslint . --fix",
     "lint:staged": "lint-staged --no-stash --no-revert --no-hide-partially-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cr": "bash scripts/cr-agent.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
